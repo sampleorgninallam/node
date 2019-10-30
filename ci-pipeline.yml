@@ -5,7 +5,7 @@
 # testing2
 
 trigger:
-- none
+- master
 
 variables:
   solution: '**/*.sln'
