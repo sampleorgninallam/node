@@ -9,9 +9,11 @@ pr: none
 
 resources:
  pipelines:
-   - pipeline: build
-     source: build_aspdotnetcore
-     trigger: true
+ - pipeline: build
+   source: build_aspdotnetcore
+   trigger: 
+    branches:
+    - master
 
 stages:
 - stage: Deploy
