@@ -6,8 +6,6 @@
 trigger:
 - master
 
-pool: demopool
-
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
