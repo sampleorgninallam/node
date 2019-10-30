@@ -3,9 +3,9 @@ pr: none
 
 resources:
  pipelines:
-   - pipeline: P1
+   - pipeline: build
      source: build_aspdotnetcore
-     trigger: true
+     trigger: True
 
 stages:
 - stage: Deploy
