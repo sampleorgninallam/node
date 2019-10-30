@@ -38,7 +38,7 @@ stages:
             displayName: 'Deploy application to Website'
             inputs:
               WebSiteName: 'Default Web Site'
-              Package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              Package: '$(Pipeline.Workspace)/**/*.zip'
               TakeAppOfflineFlag: true
               XmlVariableSubstitution: true
 
