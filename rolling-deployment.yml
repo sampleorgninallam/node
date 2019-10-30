@@ -4,7 +4,7 @@ pr: none
 resources:
  pipelines:
    - pipeline: P1
-     source: publish_artifact_pipeline
+     source: build_aspdotnetcore
      trigger: true
 
 stages:
