@@ -1,0 +1,69 @@
+trigger: none
+pr: none
+
+resources:
+ pipelines:
+   - pipeline: P1
+     source: publish_artifact_pipeline
+     trigger: true
+
+stages:
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:  
+  - deployment: VMDeploy
+    displayName: web
+    pool: demopool
+    environment:
+      name: VM-Env
+      resourceType: VirtualMachine
+    strategy:
+      rolling:
+        maxBatchSize: 2
+        preDeploy:
+          steps:
+            - script: echo Hello, world! This is pre-deploy
+              displayName: 'Run a one-line script'
+        deploy:
+          steps:          
+          - task: IISWebAppManagementOnMachineGroup@0
+            displayName: 'Create Website'
+            inputs:
+              IISDeploymentType: 'IISWebsite'
+              ActionIISWebsite: 'CreateOrUpdateWebsite'
+              WebsiteName: 'Default Web Site'
+              WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot'
+              WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
+              AddBinding: true
+              Bindings: '{"bindings":[{"protocol":"http","ipAddress":"All Unassigned","port":"80","hostname":"","sslThumbprint":"","sniFlag":false}]}'
+              ParentWebsiteNameForVD: 'Default Web Site'
+              ParentWebsiteNameForApplication: 'Default Web Site'
+          - task: IISWebAppDeploymentOnMachineGroup@0
+            displayName: 'Deploy application to Website'
+            inputs:
+              WebSiteName: 'Default Web Site'
+              Package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              TakeAppOfflineFlag: true
+              XmlVariableSubstitution: true
+
+        routeTraffic:
+          steps:
+            - script: echo Hello, world! This is routeTraffic
+              displayName: 'Run a one-line script'
+
+        postRouteTraffic:
+          steps:
+            - script: echo Hello, world! This is postRouteTraffic
+              displayName: 'Run a one-line script'
+
+        on:
+          failure:
+            steps:
+            - script: echo Hello, world! This is on failure
+              displayName: 'Run a one-line script'
+
+          success:
+            steps:
+            - script: echo Hello, world! This is on success
+              displayName: 'Run a one-line script' 
+
