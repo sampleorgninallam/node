@@ -22,6 +22,7 @@ stages:
         maxBatchSize: 1
         preDeploy:
           steps:
+            - download: none
             - script: echo Hello, world! This is pre-deploy
               displayName: 'Run a one-line script'
         deploy:
@@ -38,28 +39,32 @@ stages:
             displayName: 'Deploy application to Website'
             inputs:
               WebSiteName: 'Default Web Site'
-              Package: '$(Pipeline.Workspace)/**/*.zip'
+              Package: '$(Pipeline.Workspace)/drop/**/*.zip'
               TakeAppOfflineFlag: true
               XmlVariableSubstitution: true
 
         routeTraffic:
           steps:
+            - download: none
             - script: echo Hello, world! This is routeTraffic
               displayName: 'Run a one-line script'
 
         postRouteTraffic:
           steps:
+            - download: none
             - script: echo Hello, world! This is postRouteTraffic
               displayName: 'Run a one-line script'
 
         on:
           failure:
             steps:
+            - download: none
             - script: echo Hello, world! This is on failure
               displayName: 'Run a one-line script'
 
           success:
             steps:
+            - download: none
             - script: echo Hello, world! This is on success
               displayName: 'Run a one-line script' 
 
