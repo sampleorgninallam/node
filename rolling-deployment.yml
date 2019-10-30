@@ -5,7 +5,7 @@ resources:
  pipelines:
    - pipeline: build
      source: build_aspdotnetcore
-     trigger: True
+     trigger: true
 
 stages:
 - stage: Deploy
