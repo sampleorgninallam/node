@@ -25,16 +25,12 @@ stages:
             - script: echo Hello, world! This is pre-deploy
               displayName: 'Run a one-line script'
         deploy:
-          steps:          
+          steps:
           - task: IISWebAppManagementOnMachineGroup@0
             displayName: 'Create Website'
             inputs:
-              IISDeploymentType: 'IISWebsite'
-              ActionIISWebsite: 'CreateOrUpdateWebsite'
               WebsiteName: 'Default Web Site'
-              WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot'
-              WebsitePhysicalPathAuth: 'WebsiteUserPassThrough'
-              AddBinding: true
+              AddBinding: True
               Bindings: '{"bindings":[{"protocol":"http","ipAddress":"All Unassigned","port":"80","hostname":"","sslThumbprint":"","sniFlag":false}]}'
               ParentWebsiteNameForVD: 'Default Web Site'
               ParentWebsiteNameForApplication: 'Default Web Site'
