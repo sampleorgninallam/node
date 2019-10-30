@@ -19,7 +19,7 @@ stages:
       resourceType: VirtualMachine
     strategy:
       rolling:
-        maxBatchSize: 2
+        maxBatchSize: 1
         preDeploy:
           steps:
             - script: echo Hello, world! This is pre-deploy
