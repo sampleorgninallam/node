@@ -1,3 +1,9 @@
+# this deploys to VM-Env
+# http://13.66.39.43/ - demoignt02 - VM01
+# http://40.84.235.28/ - demoignt12 - VM02
+# http://52.171.218.16/ - demoignt03 - VM03
+
+
 trigger: none
 pr: none
 
