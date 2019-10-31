@@ -61,23 +61,20 @@ stages:
 
         postRouteTraffic:
           steps:
-            - download: build
-              artifact: drop
+            - download: none
             - script: echo Hello, world! This is postRouteTraffic
               displayName: 'Run a one-line script'
 
         on:
           failure:
             steps:
-            - download: build
-              artifact: drop
+            - download: none
             - script: echo Hello, world! This is on failure
               displayName: 'Run a one-line script'
 
           success:
             steps:
-            - download: build
-              artifact: drop
+            - download: none
             - script: echo Hello, world! This is on success
               displayName: 'Run a one-line script' 
 
