@@ -10,7 +10,7 @@ pr: none
 resources:
  pipelines:
  - pipeline: build
-   source: build_aspdotnetcore
+   source: BuildWebApp
    trigger: 
     branches:
     - master
