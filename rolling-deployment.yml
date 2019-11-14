@@ -4,7 +4,7 @@
 # http://52.171.218.16/ - demoignt03 - VM03
 
 
-trigger: none
+# trigger: none
 pr: none
 
 resources:
