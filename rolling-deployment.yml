@@ -1,7 +1,5 @@
 # this deploys to VM-Env
-# http://13.66.39.43/ - demoignt02 - VM01
-# http://40.84.235.28/ - demoignt12 - VM02
-# http://52.171.218.16/ - demoignt03 - VM03
+
 
 
 # trigger: none
@@ -10,7 +8,7 @@ pr: none
 resources:
  pipelines:
  - pipeline: build
-   source: BuildWebApp
+   source: ci_vm_app
    trigger: 
     branches:
     - master
@@ -23,7 +21,7 @@ stages:
     displayName: web
     pool: demopool
     environment:
-      name: VM-Env
+      name: Production
       resourceType: VirtualMachine
     strategy:
       rolling:
