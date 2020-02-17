@@ -18,8 +18,7 @@ stages:
   displayName: Deploy stage
   jobs:  
   - deployment: VMDeploy
-    displayName: web
-    pool: demopool
+    displayName: web    
     environment:
       name: Production
       resourceType: VirtualMachine
