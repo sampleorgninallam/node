@@ -49,7 +49,7 @@ stages:
             displayName: 'Deploy application to Website'
             inputs:
               WebSiteName: 'Default Web Site'
-              Package: '$(Pipeline.Workspace)/drop/**/*.zip'
+              Package: '$(Pipeline.Workspace)/build/drop/**/*.zip'
               TakeAppOfflineFlag: true
               XmlVariableSubstitution: true
 
