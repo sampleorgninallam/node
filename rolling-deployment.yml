@@ -15,6 +15,7 @@ resources:
 
 variables:
   deployenv: 'test-vm' 
+  system.debug: true
 
 stages:
 - stage: Deploy
